@@ -1,0 +1,16 @@
+services:
+  koders-pg:
+    build: .
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4:4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: koders@example.com
+      PGADMIN_DEFAULT_PASSWORD: koders
+    links:
+      - koders-pg
+    ports:
+      - "8080:80"
